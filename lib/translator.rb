@@ -1,13 +1,13 @@
-require "yaml"
+require 'yaml'
 require 'pry' # require modules here
 
 def load_library(file)
  library = YAML.load_file('./lib/emoticons.yml')
  result = {"get_meaning" => {}, "get_emoticon" => {}}
-# binding.pry
-library.each do |meaning, emoticons|
-  result["get_meaning"][emoticons[1]] = meaning
-  result["get_emoticon"][emoticons[0]] = emoticons[1]
+binding.pry
+library.each do |meaning, emoticons| #meaning highlights yaml keys, emoticons highlights yaml arrays
+  result["get_meaning"][emoticons[1]] = meaning #moves last value of all arrays to get_meaning and sets what we want to pull for the meaning
+  result["get_emoticon"][emoticons[0]] = emoticons[1] #moves the first values of all arrays and sets those values(english emoticons) equal to the japanese emoticons
     end
 result
 end
